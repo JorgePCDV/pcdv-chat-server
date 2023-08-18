@@ -9,7 +9,6 @@ using namespace std;
 int main()
 {
     cout << "Step 1: Setting up DLL" << endl;
-    
     SOCKET serverSocket, acceptSocket;
     int port = 55555;
     WSADATA wsaData;
