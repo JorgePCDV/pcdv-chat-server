@@ -46,7 +46,6 @@ int main()
     }
 
     cout << "Step 3: Bind Socket" << endl;
-
     sockaddr_in service;
     service.sin_family = AF_INET;
 
@@ -63,6 +62,17 @@ int main()
     {
         cout << "bind() is OK!" << endl;
     }
+
+    cout << "Step 4: Initiate Listen" << endl;
+    if (listen(serverSocket, 1) == SOCKET_ERROR) 
+    {
+        cout << "listen(): Error listening on socket" << WSAGetLastError() << endl;
+    }
+    else 
+    {
+        cout << "listen() is OK, server waiting for connections";
+    }
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
