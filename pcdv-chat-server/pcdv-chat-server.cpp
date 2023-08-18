@@ -1,5 +1,6 @@
 #include <iostream>
 //#include "stadfx.h"
+#include <tchar.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
@@ -42,6 +43,25 @@ int main()
     else 
     {
         cout << "socket() is OK!" << endl;
+    }
+
+    cout << "Step 3: Bind Socket" << endl;
+
+    sockaddr_in service;
+    service.sin_family = AF_INET;
+
+    InetPton(AF_INET, _T("127.0.0.1"), &service.sin_addr.s_addr);
+    service.sin_port = htons(port);
+    if(bind(serverSocket, (SOCKADDR*)&service, sizeof(service))==SOCKET_ERROR)
+    {
+        cout << "bind() failed: " << WSAGetLastError() << endl;
+        closesocket(serverSocket);
+        WSACleanup();
+        return 0;
+    }
+    else 
+    {
+        cout << "bind() is OK!" << endl;
     }
 }
 
