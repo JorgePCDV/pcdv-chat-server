@@ -70,9 +70,20 @@ int main()
     }
     else 
     {
-        cout << "listen() is OK, server waiting for connections";
+        cout << "listen() is OK, server waiting for connections" << endl;
     }
 
+    cout << "Step 5: Accept Connections" << endl;
+    acceptSocket = accept(serverSocket, NULL, NULL);
+    if (acceptSocket == INVALID_SOCKET) 
+    {
+        cout << "Accept failed:" << WSAGetLastError() << endl;
+        WSACleanup();
+        return -1;
+    }
+    cout << "Accepted connection" << endl;
+    system("pause");
+    WSACleanup();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
