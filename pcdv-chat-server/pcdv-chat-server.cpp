@@ -29,7 +29,6 @@ int main()
     }
 
     cout << "Step 2: Setting up Server Socket" << endl;
-
     serverSocket = INVALID_SOCKET;
     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
