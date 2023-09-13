@@ -95,6 +95,18 @@ int main()
         {
             WSACleanup();
         }
+        
+        char confirmation[200] = "Message Received";
+        byteCount = send(acceptSocket, confirmation, 200, 0);
+
+        if (byteCount > 0)
+        {
+            cout << "Automated message sent to client." << endl;
+        }
+        else
+        {
+            WSACleanup();
+        }
     }
     
 
